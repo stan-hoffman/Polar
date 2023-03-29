@@ -6,6 +6,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 0;
+        padding-left: 0;
     }
     &__tab {
         margin-top: 69px;
@@ -21,9 +23,23 @@
         border: 2px solid #D0D0D0;
         transform: skewX(-25deg);
         margin: 0 5px;
+        cursor: pointer;
+        transition: 0.5s all;
+        &:hover {
+            box-shadow: 3px 3px 20px $main-color;
+            border:     none;
+        }
         div {
             transform: skewX(25deg);
         }
-    } 
-   
+        &_active {
+            color: #fff;
+            background: rgba(199, 1, 1, 1);
+            border: none;
+        }
+    }   
+    &__content {
+        margin-top: 60px;
+        
+    }
 }
