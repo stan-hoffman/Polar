@@ -49,6 +49,7 @@
         background: #FFFFFF;
         border: 2px solid #E8E8E8;
         padding: 20px 20px 26px 20px;
+
         &__img {
             display: block;
             height: 200px;
@@ -103,13 +104,36 @@
             сolor: #555555;     
         }
         &__price {
-            font-family: 'MuseoModerno';
             font-style: normal;
             font-weight: 700;
             font-size: 20px;
             line-height: 20px;
             align-items: flex-end;
             color: #050505;
+        }
+        &__wrapper {
+            display: flex;
+            width: 200%;
+        }
+        &__content {
+            width: 50%;
+            margin-right: 0px;
+            transition: 0,5s all;
+            &_active {
+                transform: translateX(0%);
+                margin-right: 20px;
+            }
+        }
+        &__list {
+            width: 50%;
+            margin-left: 20px;
+            transform: translateX(0%);
+            padding-right: 20px;
+            transition: 0,5s all;
+            &_active {
+                transform: translateX(-100%);
+                margin-left: 0px    ;
+            }
         }
     }
 }
