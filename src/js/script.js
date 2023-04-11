@@ -52,6 +52,27 @@ $(document).ready(function(){
           $('.overlay, #order').fadeIn('slow');
         });
       });
+      $('#consultation-form').validate();
+      $('#consultation form').validate({
+          rules: {
+            name: "required",
+            phone: "required",
+            email: {
+              required: true,
+              email: true, 
+            }
+          },
+          messages: {
+            name: "Пожалуйста введите свое имя",
+            phone: "Пожалуйста введите свое имя",
+            email: {
+              required: "Пожалуйста введите свой email  ",
+              email: "Введите корректную почту по типу name@domain.com"
+            }
+          }
+      });
+      
+      $('#order form').validate();
   });
 
 
