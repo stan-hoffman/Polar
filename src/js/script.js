@@ -52,6 +52,7 @@ $(document).ready(function(){
           $('.overlay, #order').fadeIn('slow');
         });
       });
+      
       $('#consultation-form').validate();
       $('#consultation form').validate({
           rules: {
@@ -64,16 +65,44 @@ $(document).ready(function(){
           },
           messages: {
             name: "Пожалуйста введите свое имя",
-            phone: "Пожалуйста введите свое имя",
+            phone: "Пожалуйста введите свой номер телефона",
             email: {
               required: "Пожалуйста введите свой email  ",
               email: "Введите корректную почту по типу name@domain.com"
             }
           }
       });
-      
-      $('#order form').validate();
+
+      function validateForms(form){
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите свое имя",
+                    minlength: jQuery.validator.format("Введите {0} символа!")
+                  },
+                phone: "Пожалуйста, введите свой номер телефона",
+                email: {
+                  required: "Пожалуйста, введите свою почту",
+                  email: "Неправильно введен адрес почты"
+                }
+            }
+        });
+    };
+
+    validateForms('#consultation-form');
+    validateForms('#consultation form');
+    validateForms('#order form');
+
+    $('input[name=phone]').mask("+38 (000) 000-00-00");
   });
-
-
-
