@@ -31,7 +31,7 @@ $(document).ready(function(){
                   e.preventDefault();
                   $('.catalog-item__content').eq(i).toggleClass('catalog-item__content_active');
                   $('.catalog-item__list').eq(i).toggleClass('catalog-item__list_active');
-              })
+              });
           });
       };
   
@@ -105,4 +105,24 @@ $(document).ready(function(){
     validateForms('#order form');
 
     $('input[name=phone]').mask("+38 (000) 000-00-00");
+
+    $('form').submit(function() {
+      e.preventDefault();
+      if(!$(this).valid()) {
+        return;
+      }
+
+      $.ajax({
+        type:'POST',
+        url:"mailer/smart.php",
+        data: $(this).serialize ()
+      }).done(function() {
+        $(this).find('input').val("");
+        $('#consulatation, #order').fadeOut();
+        $('.overlay, #thanks').fadeIn('slow');
+
+        $('form').trigger('reset');
+      });  
+      return false;
+    });
   });
